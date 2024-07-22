@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>decrypt-timer</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js">
+    </script>
+</head>
+<body>
+    <!--Form which shall hold all the inputs that he user will handle-->
+    <div id="align">
+        <form id="inputForm">
+            <!--Label responsible for giving info to the user about the drop-down -->
+            <label for="cryptMethods">
+            Select a cryptography algorithm
+            </label>
+            <!-- Drop-down button which will handle the user selected algorithm-->
+            <!-- 
+            This HTML element will not hold any
+            static value to it, as the javascript
+            programm will be responsible for 
+            dynamically allocating new algo methods,
+            whenever the page is reloaded or has 
+            just been loaded.
+            -->
+            <select name="cryptMethods" id="btnDropDown">
+            </select>
+            <!--Label responsible for giving info to the user about the content they want to encrypt -->
+            <label for="message">
+            Content
+            </label>
+            <!--Text area containing the message to be encrypted by the Java API-->
+            <textarea name="message" id="txtMessage">
+            </textarea>
+            <!--Button which will do the action of calling the API-->
+            <input type="submit" id="btnEncrypt" value="Encrypt" onclick="displayJsonFile()">
+        </form>
+    </div>
+</body>
+</html>
