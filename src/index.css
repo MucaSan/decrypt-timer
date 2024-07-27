@@ -4,9 +4,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    resize:none;
 }
 
-
+textarea{
+    resize: none;
+}
 #btnDropDown{
     width: 100px;
 }
