@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>decrypt-timer</title>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js">
+    <script src="index.js" defer>
     </script>
 </head>
 <body>
@@ -25,14 +25,14 @@
             whenever the page is reloaded or has 
             just been loaded.
             -->
-            <select name="cryptMethods" id="btnDropDown">
+            <select name="cryptMethods" id="btnDropDown" value="teste">
             </select>
             <!--Label resposible for giving info to the user about the secret key string-->
-            <label for="key">
+            <label class="input-keys" for="key">
                 Secret Key
             </label>
             <!--Input responsible for getting the key to be used and passing it to the API -->
-            <input type="text" id="key">
+            <input class="input-keys" name="key" type="text" id="key">
             <!--Label responsible for giving info to the user about the content they want to encrypt -->
             <label for="message">
             Content
