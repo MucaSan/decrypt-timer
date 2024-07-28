@@ -18,10 +18,11 @@ async function inputDropButtonData(){
     // create DOM object for interacting with select button
     const btnDropDown = document.querySelector("#btnDropDown");
     // log the JSON content to the browser
-    console.log("JSON FILE loaded sucessfully" + data["algorithms"]);
+    console.log("JSON FILE loaded sucessfully \n " + data["algorithms"]);
     // create objects and instance them on the select HTML element
     setDropButtonList(data,btnDropDown);
 }
+// adds the objects to the select HTML item
 function setDropButtonList(data,btnDropDown){
     var i = data["algorithms"].length;
     var j = 0;
@@ -30,26 +31,29 @@ function setDropButtonList(data,btnDropDown){
         j++;
     }
 }
+// customizes the creation of the DOM objects
 function createObjectOption(btnDropButton, optionName){
     var option = document.createElement('option');
     option.value = optionName;
     option.innerHTML = optionName; 
     btnDropButton.appendChild(option);
 }
-
+// hides the key label and key input
 function hideKeys(){
     document.querySelectorAll(".input-keys").forEach(element => {
         element.style.display="none";
     });
 }
+// shows the key label and key input
 function showKeys(){
    document.querySelectorAll(".input-keys").forEach(element => {
      element.style.display="flex";
    });
 }
+// verifies each options, after the event logger has been set
 function verifyOption(){
     var drop = document.querySelector("#btnDropDown");
-    console.log("The selected "+drop.value);
+    console.log("The selected algorithm is: " + drop.value);
     if (drop.value.includes("AES")){
         hideKeys();
         return;
