@@ -25,7 +25,7 @@ async function inputDropButtonData(){
 function setDropButtonList(data,btnDropDown){
     var i = data["algorithms"].length;
     var j = 0;
-    while(j <= i){
+    while(j < i){
         createObjectOption(btnDropDown, data["algorithms"][j]);
         j++;
     }
@@ -37,7 +37,6 @@ function createObjectOption(btnDropButton, optionName){
     btnDropButton.appendChild(option);
 }
 document.addEventListener("DOMContentLoaded", inputDropButtonData());
-document.addEventListener("")
 
 // the index JS should change accodingly to which algorithm has been chosen.
 
