@@ -1,4 +1,0 @@
- {
-    "algorithms":["AES-256", "AES-128", "AES-196",
-    "Vigenère", "3DES", "Caesar", "Blowfish"]
-}
