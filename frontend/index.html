@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>decrypt-timer</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer>
-    </script>
-</head>
-<body>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <!--div to logically seperate action buttons-->
+    <div class="choose-type-action">
+      <button id="encode">Encode</button>
+      <button id="decode">Decode</button>
+    </div>
+    <div class="content-square">
     <!--Form which shall hold all the inputs that he user will handle-->
-    <div id="align">
-        <form id="inputForm">
-            <!--Label responsible for giving info to the user about the drop-down -->
-            <label for="cryptMethods">
-            Select a cryptography algorithm
-            </label>
-            <!-- Drop-down button which will handle the user selected algorithm-->
-            <!-- 
+      <form id="input-form">
+        <!--Label responsible for giving info to the user about the drop-down -->
+        <label for="cryptMethods"> Select a cryptography algorithm </label>
+        <!-- Drop-down button which will handle the user selected algorithm-->
+        <!-- 
             This HTML element will not hold any
             static value to it, as the javascript
             programm will be responsible for 
@@ -25,24 +27,19 @@
             whenever the page is reloaded or has 
             just been loaded.
             -->
-            <select name="cryptMethods" id="btnDropDown" value="teste">
-            </select>
-            <!--Label resposible for giving info to the user about the secret key string-->
-            <label class="input-keys" for="key">
-                Secret Key
-            </label>
-            <!--Input responsible for getting the key to be used and passing it to the API -->
-            <input class="input-keys" name="key" type="text" id="key">
-            <!--Label responsible for giving info to the user about the content they want to encrypt -->
-            <label for="message">
-            Content
-            </label>
-            <!--Text area containing the message to be encrypted by the Java API-->
-            <textarea name="message" id="txtMessage">
-            </textarea>
-            <!--Button which will do the action of calling the API-->
-            <input type="submit" id="btnEncrypt" value="Encrypt">
-        </form>
+        <select name="cryptMethods" id="btnDropDown" value="teste"></select>
+        <!--Label resposible for giving info to the user about the secret key string-->
+        <label class="input-keys" for="key"> Secret Key </label>
+        <!--Input responsible for getting the key to be used and passing it to the API -->
+        <input class="input-keys" name="key" type="text" id="key" />
+        <!--Label responsible for giving info to the user about the content they want to encrypt -->
+        <label for="message"> Content </label>
+        <!--Text area containing the message to be encrypted by the Java API-->
+        <textarea name="message" id="txtMessage"> </textarea>
+        <!--Button which will do the action of calling the API-->
+        <input type="submit" id="btnEncrypt" value="Encrypt" />
+        <input type="submit" id="btnDecrypt" value="Decrypt" />
+      </form>
     </div>
-</body>
+  </body>
 </html>

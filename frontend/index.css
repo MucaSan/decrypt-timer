@@ -1,4 +1,4 @@
-#inputForm{
+#input-form{
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -12,4 +12,8 @@ textarea{
 }
 #btnDropDown{
     width: 100px;
+}
+
+#btnDecrypt{
+    display:none;
 }

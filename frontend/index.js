@@ -43,12 +43,14 @@ function hideKeys(){
     document.querySelectorAll(".input-keys").forEach(element => {
         element.style.display="none";
     });
+    console.log("hidden");
 }
 // shows the key label and key input
 function showKeys(){
    document.querySelectorAll(".input-keys").forEach(element => {
      element.style.display="flex";
    });
+   console.log("showing");
 }
 // verifies each options, after the event logger has been set
 function verifyOption(){
@@ -59,7 +61,21 @@ function verifyOption(){
         return;
     }
     showKeys();
+    return;
 }
+document.querySelectorAll(".choose-type-action").forEach(element=>{
+    if (element.innerHTML.includes("En")){
+        element.addEventListener("click", ()=>{
+            document.getElementById("btnDecrypt").style.display=none;
+            document.getElementById("btnEncrypt").style.display=flex;
+        });
+    } else{
+        element.addEventListener("click", ()=>{
+            document.getElementById("btnDecrypt").style.display=flex;
+            document.getElementById("btnEncrypt").style.display=none;
+        })
+    }
+});
 document.addEventListener("DOMContentLoaded", inputDropButtonData);
 document.querySelector("#btnDropDown").addEventListener("change", verifyOption);
 
