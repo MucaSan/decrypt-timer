@@ -63,19 +63,19 @@ function verifyOption(){
     showKeys();
     return;
 }
-document.querySelectorAll(".choose-type-action").forEach(element=>{
-    if (element.innerHTML.includes("En")){
-        element.addEventListener("click", ()=>{
-            document.getElementById("btnDecrypt").style.display=none;
-            document.getElementById("btnEncrypt").style.display=flex;
-        });
-    } else{
-        element.addEventListener("click", ()=>{
-            document.getElementById("btnDecrypt").style.display=flex;
-            document.getElementById("btnEncrypt").style.display=none;
-        })
-    }
-});
+
+function setActionAsEncrypt(){
+    document.getElementById("btnDecrypt").style.display="none";
+    document.getElementById("btnEncrypt").style.display="flex";
+}
+
+function setActionAsDecrypt(){
+    document.getElementById("btnDecrypt").style.display="flex";
+    document.getElementById("btnEncrypt").style.display="none";
+}
+
+document.getElementById("encode").addEventListener("click", setActionAsEncrypt);
+document.getElementById("decode").addEventListener("click", setActionAsDecrypt);
 document.addEventListener("DOMContentLoaded", inputDropButtonData);
 document.querySelector("#btnDropDown").addEventListener("change", verifyOption);
 
