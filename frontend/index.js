@@ -63,12 +63,12 @@ function verifyOption(){
     showKeys();
     return;
 }
-
+// hides the decrypt button and shows the encrypt button
 function setActionAsEncrypt(){
     document.getElementById("btnDecrypt").style.display="none";
     document.getElementById("btnEncrypt").style.display="flex";
 }
-
+// shows the decrypt button and hides the encrypt button
 function setActionAsDecrypt(){
     document.getElementById("btnDecrypt").style.display="flex";
     document.getElementById("btnEncrypt").style.display="none";
