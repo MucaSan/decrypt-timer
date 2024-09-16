@@ -74,11 +74,33 @@ function setActionAsDecrypt(){
     document.getElementById("btnEncrypt").style.display="none";
 }
 
+function postEncryptMethod() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8080/caesar", true);
+    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) { // DONE
+            if (xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText));
+            } else {
+                console.error('Error:', xhr.statusText);
+            }
+        }
+    };
+
+    var data = JSON.stringify({
+        description: "He's a really good looking person! I wish I could talk more with him.",
+        secretKey: "a"
+    });
+
+    xhr.send(data);
+}
+document.querySelector("#btnEncrypt").addEventListener("click",postEncryptMethod)
 document.getElementById("encode").addEventListener("click", setActionAsEncrypt);
 document.getElementById("decode").addEventListener("click", setActionAsDecrypt);
 document.addEventListener("DOMContentLoaded", inputDropButtonData);
 document.querySelector("#btnDropDown").addEventListener("change", verifyOption);
-
 // the index JS should change accodingly to which algorithm has been chosen.
 
 /* 

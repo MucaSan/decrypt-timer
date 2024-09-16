@@ -22,6 +22,7 @@ func EncryptDescription(c *gin.Context) {
 		if string(letter) == caesarEncrypt.SecretKey {
 			c.JSON(http.StatusOK, gin.H{"Encrypted message": caesarCipher.Encrypt(caesarEncrypt.Description, uint(i+1))})
 			fmt.Println("Passing here!")
+
 		}
 	}
 
