@@ -2,12 +2,9 @@ package controllers
 
 import (
 	"api/api/models"
-	"fmt"
 	"net/http"
-	"strings"
 
 	"github.com/gin-gonic/gin"
-	caesarCipher "github.com/theTardigrade/golang-caesarCipher"
 )
 
 func EncryptDescription(c *gin.Context) {
@@ -17,13 +14,22 @@ func EncryptDescription(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"Error: ": err.Error()})
 		return
 	}
-	caesarEncrypt.SecretKey = strings.ToUpper(caesarEncrypt.SecretKey)
-	for i, letter := range models.EnglishAlphabet {
-		if string(letter) == caesarEncrypt.SecretKey {
-			c.JSON(http.StatusOK, gin.H{"Encrypted message": caesarCipher.Encrypt(caesarEncrypt.Description, uint(i+1))})
-			fmt.Println("Passing here!")
-
-		}
+	statusCode, encryptedDescription := models.ReturnDecryptedDescriptionWithStatusCode(&caesarEncrypt)
+	if statusCode != http.StatusBadRequest {
+		c.JSON(statusCode, gin.H{"Decrypted description:": encryptedDescription})
 	}
-
+	c.JSON(statusCode, gin.H{"Error: ": encryptedDescription})
+}
+func DecryptDescription(c *gin.Context) {
+	var caesarDecrypt models.Caesar
+	c.ShouldBindBodyWithJSON(&caesarDecrypt)
+	if err := models.ValidateCaesar(caesarDecrypt); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Error: ": err.Error()})
+		return
+	}
+	statusCode, decryptedDescription := models.ReturnDecryptedDescriptionWithStatusCode(&caesarDecrypt)
+	if statusCode != http.StatusBadRequest {
+		c.JSON(statusCode, gin.H{"Decrypted description:": decryptedDescription})
+	}
+	c.JSON(statusCode, gin.H{"Error: ": decryptedDescription})
 }

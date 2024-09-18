@@ -74,6 +74,21 @@ function setActionAsDecrypt(){
     document.getElementById("btnEncrypt").style.display="none";
 }
 
+ async function getData() {
+        const url = "http://localhost:8080/";
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+      
+          const json = await response.json();
+          console.log(json);
+        } catch (error) {
+          console.error(error.message);
+        }
+}
+
 function postEncryptMethod() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "http://localhost:8080/caesar", true);
@@ -96,7 +111,7 @@ function postEncryptMethod() {
 
     xhr.send(data);
 }
-document.querySelector("#btnEncrypt").addEventListener("click",postEncryptMethod)
+document.querySelector("#btnEncrypt").addEventListener("click",getData)
 document.getElementById("encode").addEventListener("click", setActionAsEncrypt);
 document.getElementById("decode").addEventListener("click", setActionAsDecrypt);
 document.addEventListener("DOMContentLoaded", inputDropButtonData);
