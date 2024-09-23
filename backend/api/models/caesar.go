@@ -1,6 +1,10 @@
 package models
 
 import (
+	"net/http"
+	"strings"
+
+	caesarCipher "github.com/theTardigrade/golang-caesarCipher"
 	"gopkg.in/validator.v2"
 	"gorm.io/gorm"
 )
@@ -18,4 +22,24 @@ func ValidateCaesar(c Caesar) error {
 		return err
 	}
 	return nil
+}
+
+func ReturnDecryptedDescriptionWithStatusCode(caesarDecrypt *Caesar) (int, string) {
+	caesarDecrypt.SecretKey = strings.ToUpper(caesarDecrypt.SecretKey)
+	for i, letter := range EnglishAlphabet {
+		if string(letter) == caesarDecrypt.SecretKey {
+			return http.StatusOK, caesarCipher.Decrypt(caesarDecrypt.Description, uint(i+1))
+		}
+	}
+	return http.StatusBadRequest, "Couldn't parse from provided Secret Key."
+}
+
+func ReturnEncryptedDescriptionWithStatusCode(caesarEncrypt *Caesar) (int, string) {
+	caesarEncrypt.SecretKey = strings.ToUpper(caesarEncrypt.SecretKey)
+	for i, letter := range EnglishAlphabet {
+		if string(letter) == caesarEncrypt.SecretKey {
+			return http.StatusOK, caesarCipher.Decrypt(caesarEncrypt.Description, uint(i+1))
+		}
+	}
+	return http.StatusBadRequest, "Couldn't parse from provided Secret Key."
 }

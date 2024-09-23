@@ -1,13 +1,13 @@
 package models
 
 import (
-	"github.com/lauslim12/vigenere"
+	"github.com/h5law/vinegar"
 	"gorm.io/gorm"
 )
 
 type Vigenere struct {
 	gorm.Model
-	Cipher      *vigenere.Vigenere
+	Vigenere    vinegar.Vigenere
 	Description string
 	SecretKey   string
 }
