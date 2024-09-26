@@ -1,0 +1,18 @@
+syntax="proto3";
+
+package test;
+
+option go_package = '.';
+
+service test{
+    rpc SendTestNameMessage(TestMessage) returns (WholeTestMessage);
+}
+
+message TestMessage{
+    string testMessage = 1;
+}
+
+message WholeTestMessage{
+    string wholeTestMessage = 1;
+}
+
