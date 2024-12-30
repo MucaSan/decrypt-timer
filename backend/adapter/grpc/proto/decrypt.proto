@@ -1,0 +1,28 @@
+syntax="proto3";
+
+package decrypt_service;
+
+service DecryptService{ 
+    rpc DecryptData(DecryptRequest) returns (DecryptResponse);    
+}
+
+message DecryptRequest{
+    string algorithm  = 1;
+    string secretKey  = 2;
+   string message = 3;
+};
+
+message DecryptResponse{
+    string success = 1; 
+    string message = 2;
+    string data  = 3; 
+}
+
+
+
+
+
+
+
+
+

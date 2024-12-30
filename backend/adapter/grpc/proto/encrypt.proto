@@ -1,0 +1,17 @@
+syntax="proto3";
+
+service EncryptService{
+    rpc EncryptData(EncryptRequest) returns (EncryptResponse);    
+}
+
+message EncryptRequest{
+    string algorithm  = 1;
+    string secretKey  = 2;
+   string message = 3;
+};
+
+message EncryptResponse{
+    string success = 1; 
+    string message = 2;
+    string data  = 3; 
+}
