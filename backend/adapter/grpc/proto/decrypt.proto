@@ -2,6 +2,9 @@ syntax="proto3";
 
 package decrypt_service;
 
+option go_package = ".;grpc";
+
+
 service DecryptService{ 
     rpc DecryptData(DecryptRequest) returns (DecryptResponse);    
 }

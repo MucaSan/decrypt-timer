@@ -1,5 +1,9 @@
 syntax="proto3";
 
+package encrypt_service;
+
+option go_package = ".;grpc";
+
 service EncryptService{
     rpc EncryptData(EncryptRequest) returns (EncryptResponse);    
 }
