@@ -7,7 +7,7 @@ set -e
 PROTO_DIR="./proto"
 
 # Define the output directory for the compiled Go files
-OUTPUT_DIR="./pb"
+OUTPUT_DIR="."
 
 # Ensure Buf is installed
 if ! [ -x "$(command -v buf)" ]; then
