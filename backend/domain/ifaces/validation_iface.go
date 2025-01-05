@@ -2,8 +2,9 @@ package validation
 
 type ValidationInterface interface {
 	IsValid() error
+	InjectValidatorInterface(va StructValidatorInterface)
 }
 
 type StructValidatorInterface interface {
-	ValidateStruct(vs ValidationInterface) error
+	ValidateStruct(vi ValidationInterface) error
 }
