@@ -2,17 +2,17 @@ package service
 
 import (
 	"context"
-	grpc "decrypter-timer/adapter/grpc/pb"
+	pb "decrypter-timer/adapter/grpc/pb"
 )
 
 func NewDecryptService() *DecryptService {
 	return &DecryptService{}
 }
 
-func (ds *DecryptService) DecryptData(ctx context.Context, in *grpc.DecryptRequest) (*grpc.DecryptResponse, error) {
+func (ds *DecryptService) DecryptData(ctx context.Context, in *pb.DecryptRequest) (*pb.DecryptResponse, error) {
 	return nil, nil
 }
 
 type DecryptService struct {
-	grpc.UnimplementedDecryptServiceServer
+	pb.UnimplementedDecryptServiceServer
 }
