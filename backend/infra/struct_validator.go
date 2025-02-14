@@ -15,29 +15,37 @@ func UTF8EnglishAndNumbersAndSpecialCharacters(fl validator.FieldLevel) bool {
 	return regex.MatchString(fl.Field().String())
 }
 
-func CaesarKeyLength(fl validator.FieldLevel) bool {
-	if fl.StructFieldName() == "SecretKey" {
-		keyLength = len(fl.Field().String())
+func ValidateCaesarKeyLength(fl validator.FieldLevel) bool {
+	fieldName := fl.StructFieldName()
+	fieldValue := fl.Field()
+	fieldContent := fieldValue.String()
+	if fieldName == "Algorithm" && !(CheckIfAlgorithmIsValid(fieldContent)) {
+		return false
 	}
 
-	if VerifyStructFieldNotAlgorithmAndRightAlgorithmType(fl, "caesar") {
-		return true
+	if fieldName == "SecretKey" && fieldValue.String() == "caesar" {
+		keyLength = len(fieldValue.String())
 	}
 
-	return ValidateCaesarKeyLength()
+	if keyLength < 0 {
+		return false
+	}
 
-}
-
-func VerifyStructFieldNotAlgorithmAndRightAlgorithmType(fl validator.FieldLevel, fieldValue string) bool {
-	return (!(fl.StructFieldName() == "Algorithm") && !(fl.Field().String() == fieldValue)) || ((fl.StructFieldName() == "Algorithm") && !(fl.Field().String() == fieldValue))
-}
-
-func ValidateCaesarKeyLength() bool {
 	if keyLength == 0 || keyLength > 1 {
 		return false
 	}
 
 	return true
+}
+
+func CheckIfAlgorithmIsValid(algorithm string) bool {
+	validAlgorithms := []string{"caesar", "3des", "blowfish", "vigenere"}
+	for _, validAlgorithm := range validAlgorithms {
+		if algorithm == validAlgorithm {
+			return true
+		}
+	}
+	return false
 }
 
 type StructValidator struct{}
